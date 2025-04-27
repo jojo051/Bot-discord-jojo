@@ -6,6 +6,8 @@ const ingredientLists = [];
 
 const dataCocktail = async () => {
 	try {
+		cron.schedule("* * * * *", async () => {
+			console.log("cocktail MAJ");
 		const URL_COKCKTAIL =
 			"https://www.thecocktaildb.com/api/json/v1/1/random.php";
 		const response = await fetch(URL_COKCKTAIL);
@@ -33,16 +35,11 @@ const dataCocktail = async () => {
 			cocktails.strIngredient14,
 			cocktails.strIngredient15,
 		);
-		
+	});
 	} catch (error) {
 		console.error("Error Fetching cocktail:", error);
 	}
 };
-
-cron.schedule("15 * * * *", async () => {
-	console.log("cocktail MAJ");
-	dataCocktail();
-});
 
 dataCocktail();
 

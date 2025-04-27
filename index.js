@@ -79,7 +79,6 @@ client.once('ready', () => {
       console.log(1,freeGames);
 
       if (freeGames.length === 0) {
-        console.log(2,freeGames);
         channel.send('Aucun nouveau jeu gratuit trouvé cette semaine 😢');
       } else {
         const title = '**🎮 Jeux gratuits Epic Games cette semaine :**\n\n';
