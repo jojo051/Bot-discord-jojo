@@ -4,7 +4,7 @@ const express = require('express');
 const fs = require('node:fs');
 const path = require('node:path');
 const cron = require('node-cron');
-const { getFreeEpicGames } = require('./commands/freeEpic');
+const { getFreeEpicGames } = require('./functions/freeEpic');
 const { EmbedBuilder } = require('discord.js');
 
 const app = express();
@@ -90,7 +90,6 @@ client.once('ready', () => {
             .setTitle(game.title)
             .setImage(game.imgUrl)
             .setDescription(game.description);
-        
             await channel.send({ embeds: [embed] });
         }
       }
