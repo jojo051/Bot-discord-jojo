@@ -82,8 +82,7 @@ client.once('ready', () => {
         channel.send('Aucun nouveau jeu gratuit trouvé cette semaine 😢');
       } else {
         const title = '**🎮 Jeux gratuits Epic Games cette semaine :**\n\n';
-        console.log(3,freeGames);
-
+        channel.send(title)
         for (const game of freeGames) {
           const embed = new EmbedBuilder()
             .setTitle(game.title)
