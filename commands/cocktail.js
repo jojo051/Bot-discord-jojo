@@ -33,15 +33,17 @@ const dataCocktail = async () => {
 			cocktails.strIngredient14,
 			cocktails.strIngredient15,
 		);
-		console.log("cocktail MAJ");
+		
 	} catch (error) {
 		console.error("Error Fetching cocktail:", error);
 	}
 };
 
 cron.schedule("15 * * * *", async () => {
+	console.log("cocktail MAJ");
 	dataCocktail();
 });
+
 dataCocktail();
 
 const { EmbedBuilder } = require("discord.js");
