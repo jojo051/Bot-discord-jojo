@@ -72,6 +72,8 @@ mon-bot-discord/
 ├── README.md        # Ce fichier
 └── index.js         # Point d'entrée du bot
 
+```
+
 </rm>
 
 ## 📜 Commandes disponibles
