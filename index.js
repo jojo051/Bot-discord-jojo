@@ -60,11 +60,11 @@ client.on('messageCreate', message => {
 });
 
 // Planifier une tâche toutes les semaines (ex: tous les jeudis à 17h00)
-const ID_CHANEL_BONPLAN = '1365999879733903410';
+
 client.once('ready', () => {
   console.log(`Bot functionGameFreeEpic connecté en tant que ${client.user.tag}`);
   
-  const channel = client.channels.cache.get(ID_CHANEL_BONPLAN);
+  const channel = client.channels.cache.get(process.env.ID_CHANNEL);
   
   if (!channel) {
     console.error('❌ Channel non trouvé.');

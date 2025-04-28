@@ -1,4 +1,8 @@
-🎮 Mon Bot Discord - Jeux gratuits & Modération
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Discord.js](https://img.shields.io/badge/Discord.js-5865F2?logo=discord&logoColor=white)
+![Epic Games](https://img.shields.io/badge/Epic%20Games-Free%20Games-black?logo=epicgames&logoColor=white)
+
+# 🎮 Mon Bot Discord - Jeux gratuits & Modération
 
 Bienvenue sur le dépôt GitHub de mon bot Discord développé en Node.js avec discord.js !
 
@@ -10,7 +14,11 @@ Ce bot propose plusieurs fonctionnalités :
 
     🛠️ Une architecture claire et modulaire pour faciliter les ajouts futurs.
 
-🚀 Installation
+    🍸 Génération de cocktails amusants.
+
+  </rm>
+
+## 🚀 Installation
 
 Clonez le projet :
 
@@ -21,7 +29,9 @@ Installez les dépendances :
 
 npm install
 
-⚙️ Configuration
+</rm>
+
+## ⚙️ Configuration
 
 Créez un fichier .env à la racine du projet :
 
@@ -34,13 +44,17 @@ Important :
 
     ID_CHANNEL ➔ l'ID du salon où seront envoyées les annonces Epic Games.
 
-📂 Structure du projet
+</rm>
 
+## 📂 Structure du projet
+
+```plaintext
 mon-bot-discord/
-├── commands/        # Commandes du bot (!help, !ban, !kick, etc.)
+├── commands/        # Commandes du bot (!help, !ban, !kick, cocktail, etc.)
 │   ├── help.js
 │   ├── ban.js
-│   └── kick.js
+│   ├── kick.js
+│   └── cocktail.js
 │
 ├── events/          # Gestion des événements Discord
 │   ├── ready.js
@@ -58,12 +72,18 @@ mon-bot-discord/
 ├── README.md        # Ce fichier
 └── index.js         # Point d'entrée du bot
 
-📜 Commandes disponibles
+</rm>
+
+## 📜 Commandes disponibles
 Commande	Description
 !help	Affiche la liste des commandes disponibles.
 !ban	Banne un utilisateur (Permission modérateur requise).
 !kick	Expulse un utilisateur (Permission modérateur requise).
-📅 Fonctionnalité Epic Games
+!cocktail	Génère aléatoirement un cocktail avec sa recette et une image.
+
+</rm>
+
+## 📅 Fonctionnalité Epic Games
 
 Chaque semaine (le jeudi à 17h00), le bot :
 
@@ -71,13 +91,17 @@ Chaque semaine (le jeudi à 17h00), le bot :
 
     Publie un message formaté avec titre, image et description pour chaque jeu dans un salon Discord spécifique.
 
-🛠️ Scripts
+</rm>    
+
+## 🛠️ Scripts
 
 Lancer le bot localement :
 
 npm start
 
-🌐 Hébergement
+</rm>
+
+## 🌐 Hébergement
 
 Pour héberger ce bot, plusieurs solutions :
 
@@ -87,15 +111,21 @@ Pour héberger ce bot, plusieurs solutions :
 
     Docker (si besoin je peux fournir un Dockerfile simple).
 
-🤝 Contribution
+## 🤝 Contribution
 
 Les contributions sont les bienvenues !
 N'hésitez pas à ouvrir une issue ou soumettre une pull request si vous avez des idées d'améliorations.
-🛡️ Licence
+
+</rm>
+
+## 🛡️ Licence
 
 Ce projet est sous licence MIT.
 Vous êtes libres de l'utiliser, modifier et partager sous les conditions de la licence.
-🔥 À venir
+
+</rm>
+
+## 🔥 À venir
 
     Ajout d'un système d'administration avancé.
 
@@ -103,10 +133,8 @@ Vous êtes libres de l'utiliser, modifier et partager sous les conditions de la 
 
     Support Slash Commands (bientôt obligatoire sur Discord).
 
-✨ Auteur
+</rm>    
+
+## ✨ Auteur
 
 Développé avec ❤️ par jojo51.
-
-Remarque
-
-N'oubliez pas de garder votre fichier .env secret et de ne jamais pousser vos tokens sur GitHub.
