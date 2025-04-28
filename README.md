@@ -16,7 +16,6 @@ Ce bot propose plusieurs fonctionnalités :
 
     🍸 Génération de cocktails amusants.
 
-  </rm>
 
 ## 🚀 Installation
 
@@ -29,22 +28,22 @@ Installez les dépendances :
 
 npm install
 
-</rm>
 
 ## ⚙️ Configuration
 
 Créez un fichier .env à la racine du projet :
-
+```plaintext
 TOKEN=VOTRE_TOKEN_DISCORD
 ID_CHANNEL=ID_DU_CHANNEL_ANNONCE
-
+````
 Important :
 
-    TOKEN ➔ votre token de bot Discord.
+  TOKEN ➔ votre token de bot Discord.
 
-    ID_CHANNEL ➔ l'ID du salon où seront envoyées les annonces Epic Games.
+  ID_CHANNEL ➔ l'ID du salon où seront envoyées les annonces Epic Games.
 
-</rm>
+  PORT ➔ port de la machine
+
 
 ## 📂 Structure du projet
 
@@ -55,10 +54,6 @@ mon-bot-discord/
 │   ├── ban.js
 │   ├── kick.js
 │   └── cocktail.js
-│
-├── events/          # Gestion des événements Discord
-│   ├── ready.js
-│   └── messageCreate.js
 │
 ├── functions/       # Fonctions spéciales (jeux gratuits Epic Games)
 │   └── freeEpic.js
@@ -74,7 +69,6 @@ mon-bot-discord/
 
 ```
 
-</rm>
 
 ## 📜 Commandes disponibles
 Commande	Description
@@ -83,17 +77,15 @@ Commande	Description
 !kick	Expulse un utilisateur (Permission modérateur requise).
 !cocktail	Génère aléatoirement un cocktail avec sa recette et une image.
 
-</rm>
 
 ## 📅 Fonctionnalité Epic Games
 
-Chaque semaine (le jeudi à 17h00), le bot :
+Chaque semaine (le jeudi à 20h00), le bot :
 
-    Récupère automatiquement la liste des jeux gratuits sur l'Epic Games Store.
+  Récupère automatiquement la liste des jeux gratuits sur l'Epic Games Store.
 
-    Publie un message formaté avec titre, image et description pour chaque jeu dans un salon Discord spécifique.
-
-</rm>    
+  Publie un message formaté avec titre, image et description pour chaque jeu dans un salon Discord spécifique.
+    
 
 ## 🛠️ Scripts
 
@@ -101,41 +93,12 @@ Lancer le bot localement :
 
 npm start
 
-</rm>
-
-## 🌐 Hébergement
-
-Pour héberger ce bot, plusieurs solutions :
-
-    Sur un VPS (Linux recommandé : Ubuntu/Debian).
-
-    Sur Railway.app, Render.com, ou autres plateformes de cloud gratuites.
-
-    Docker (si besoin je peux fournir un Dockerfile simple).
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues !
-N'hésitez pas à ouvrir une issue ou soumettre une pull request si vous avez des idées d'améliorations.
-
-</rm>
 
 ## 🛡️ Licence
 
 Ce projet est sous licence MIT.
 Vous êtes libres de l'utiliser, modifier et partager sous les conditions de la licence.
-
-</rm>
-
-## 🔥 À venir
-
-    Ajout d'un système d'administration avancé.
-
-    Notifications personnalisables par serveur.
-
-    Support Slash Commands (bientôt obligatoire sur Discord).
-
-</rm>    
+    
 
 ## ✨ Auteur
 
