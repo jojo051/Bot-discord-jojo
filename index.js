@@ -30,6 +30,11 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);  
 }
 
+if (!process.env.TOKEN || !process.env.ID_CHANNEL) {
+  console.error("❌ TOKEN ou ID_CHANNEL manquant dans les variables d'environnement");
+  process.exit(1);
+}
+
 // Serveur Express
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
