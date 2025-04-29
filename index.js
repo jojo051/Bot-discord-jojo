@@ -30,8 +30,8 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);  
 }
 
-if (!process.env.TOKEN || !process.env.ID_CHANNEL) {
-  console.error("❌ TOKEN ou ID_CHANNEL manquant dans les variables d'environnement");
+if (!process.env.DISCORD_TOKEN || !process.env.ID_CHANNEL) {
+  console.error("❌ DISCORD_TOKEN ou ID_CHANNEL manquant dans les variables d'environnement");
   process.exit(1);
 }
 
