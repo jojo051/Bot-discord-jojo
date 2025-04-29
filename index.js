@@ -61,10 +61,10 @@ client.on('messageCreate', message => {
 
 // Planifier une tâche toutes les semaines (ex: tous les jeudis à 17h00)
 
-client.once('ready', () => {
+client.once('ready', async() => {
   console.log(`Bot functionGameFreeEpic connecté en tant que ${client.user.tag}`);
-  
-  const channel = client.channels.cache.get(process.env.ID_CHANNEL);
+  try{
+  const channel = await client.channels.fetch(process.env.ID_CHANNEL);
   
   if (!channel) {
     console.error('❌ Channel non trouvé.');
@@ -93,6 +93,10 @@ client.once('ready', () => {
       }
     });
   }
+} catch(error) {
+  console.error('Erreur lors de la récupération du channel :', error);
+}
+
 });
 
 client.login(process.env.DISCORD_TOKEN);
