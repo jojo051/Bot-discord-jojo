@@ -2,7 +2,7 @@
 FROM node:20-alpine
 
 # Étape 2 : Créer un répertoire de travail dans le conteneur
-WORKDIR /app
+WORKDIR .
 
 # Étape 3 : Copier les fichiers nécessaires
 COPY package*.json ./
