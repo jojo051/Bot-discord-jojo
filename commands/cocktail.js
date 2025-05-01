@@ -2,7 +2,7 @@ const cron = require("node-cron");
 
 let cocktail = "";
 let cocktailImg = "";
-const ingredientLists = [];
+let ingredientLists = [];
 
 const dataCocktail = async () => {
 	try {
@@ -16,7 +16,7 @@ const dataCocktail = async () => {
 			cocktail = cocktails.strDrink;
 
 			cocktailImg = cocktails.strDrinkThumb;
-
+			ingredientLists = []
 			ingredientLists.push(
 				cocktails.strIngredient1,
 				cocktails.strIngredient2,
