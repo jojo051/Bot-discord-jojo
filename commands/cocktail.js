@@ -29,9 +29,7 @@ const fetchDataCoctail = async () =>{
 		cocktails.strIngredient13,
 		cocktails.strIngredient14,
 		cocktails.strIngredient15,
-		
 	)
-	ingredientLists.filter((ingredient) => ingredient !== null).join(" ")
 }
 fetchDataCoctail()
 
@@ -43,7 +41,7 @@ module.exports = {
 		const embed = new EmbedBuilder()
 			.setTitle(cocktail)
 			.setImage(cocktailImg)
-			.setDescription(`Ingredients: ${ingredientLists}`);
+			.setDescription(`Ingredients: \n - ${ingredientLists.filter((ingredient) => ingredient !== null).join(" \n - ")}`);
 
 		message.channel.send({ embeds: [embed] });
 	},
