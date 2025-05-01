@@ -29,8 +29,9 @@ const fetchDataCoctail = async () =>{
 		cocktails.strIngredient13,
 		cocktails.strIngredient14,
 		cocktails.strIngredient15,
-		ingredientLists.filter((ingredient) => ingredient !== null).join(" ")
+		
 	)
+	ingredientLists.filter((ingredient) => ingredient !== null).join(" ")
 }
 fetchDataCoctail()
 
