@@ -1,48 +1,36 @@
-let cocktail = "";
-let cocktailImg = "";
-let ingredientLists = [];
-
-const fetchDataCoctail = async () =>{
-	const URL_COKCKTAIL =
-			"https://www.thecocktaildb.com/api/json/v1/1/random.php";
-	const response =  await fetch(URL_COKCKTAIL);
-	const dataCocktail =await response.json();
-	const cocktails = dataCocktail.drinks[0];
-
-	cocktail = cocktails.strDrink;
-
-	cocktailImg = cocktails.strDrinkThumb;
-	ingredientLists = []
-	ingredientLists.push(
-		cocktails.strIngredient1,
-		cocktails.strIngredient2,
-		cocktails.strIngredient3,
-		cocktails.strIngredient4,
-		cocktails.strIngredient5,
-		cocktails.strIngredient6,
-		cocktails.strIngredient7,
-		cocktails.strIngredient8,
-		cocktails.strIngredient9,
-		cocktails.strIngredient10,
-		cocktails.strIngredient11,
-		cocktails.strIngredient12,
-		cocktails.strIngredient13,
-		cocktails.strIngredient14,
-		cocktails.strIngredient15,
-	)
-}
-fetchDataCoctail()
-
 const { EmbedBuilder } = require("discord.js");
-module.exports = {
-	name: "cocktail",
-	description: "Cocktail du jour",
-	execute(message) {
-		const embed = new EmbedBuilder()
-			.setTitle(cocktail)
-			.setImage(cocktailImg)
-			.setDescription(`Ingredients: \n - ${ingredientLists.filter((ingredient) => ingredient !== null).join(" \n - ")}`);
 
-		message.channel.send({ embeds: [embed] });
-	},
+module.exports = {
+  name: "cocktail",
+  description: "Cocktail du jour",
+  async execute(message) {
+    const URL_COCKTAIL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    try {
+      const response = await fetch(URL_COCKTAIL);
+      const data = await response.json();
+      const drink = data.drinks[0];
+
+      const cocktailName = drink.strDrink;
+      const cocktailImg = drink.strDrinkThumb;
+
+      // Récupération des ingrédients non null
+      const ingredients = [];
+      for (let i = 1; i <= 15; i++) {
+        const ingredient = drink[`strIngredient${i}`];
+        if (ingredient) ingredients.push(ingredient);
+      }
+
+      const embed = new EmbedBuilder()
+        .setTitle(cocktailName)
+        .setImage(cocktailImg)
+        .setDescription(`**Ingrédients :**\n - ${ingredients.join("\n - ")}`)
+        .setColor(0xFFA500);
+
+      message.channel.send({ embeds: [embed] });
+
+    } catch (err) {
+      console.error("Erreur lors de la récupération du cocktail :", err);
+      message.channel.send("🥲 Impossible de récupérer un cocktail pour l’instant.");
+    }
+  },
 };

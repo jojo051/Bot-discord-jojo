@@ -81,8 +81,6 @@ client.once('ready', () => {
       console.log('🔔 Vérification des jeux gratuits Epic Games...');
 
       const freeGames = await getFreeEpicGames();
-      console.log(1,freeGames);
-
       if (freeGames.length === 0) {
         channel.send('Aucun nouveau jeu gratuit trouvé cette semaine 😢');
       } else {
