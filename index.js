@@ -77,7 +77,7 @@ client.once('ready', () => {
     console.log('✅ Channel trouvé.');
 
     // Ensuite ici tu mets ton cron
-    cron.schedule('0 20 * * 4', async () => {
+    cron.schedule('0 18 * * 4', async () => {
       console.log('🔔 Vérification des jeux gratuits Epic Games...');
 
       const freeGames = await getFreeEpicGames();
