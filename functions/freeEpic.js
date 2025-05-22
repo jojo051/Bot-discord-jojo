@@ -10,7 +10,10 @@ async function getFreeEpicGames() {
 		const games = response.data.data.Catalog.searchStore.elements;
 
 		const freeGames = games.filter(
-			(game) => game.promotions && game.promotions.promotionalOffers.length > 0,
+			(game) => 
+				(game.promotions && game.promotions.promotionalOffers.length > 0)
+			 && 
+			 (game.price.totalPrice.discountPrice === game.price.totalPrice.originalPrice)
 		);
 
 		return freeGames.map((game) => ({
