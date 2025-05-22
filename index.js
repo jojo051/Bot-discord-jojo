@@ -83,7 +83,7 @@ client.once("ready", () => {
 		} else {
 			message = "**🎮 Jeux gratuits Epic Games cette semaine :**\n\n";
 			for (const game of freeGames) {
-				message += `- [${game.title}](${game.imgUrl})\n${game.description}\n`;
+				message += `- [${game.title}](${game.imgUrl})${game.description}\n`;
 			}
 		}
 
