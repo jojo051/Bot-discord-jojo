@@ -9,6 +9,7 @@ const cron = require("node-cron");
 
 const { getFreeEpicGames } = require("./functions/freeEpic");
 const { CHANNEL_IDS } = require("./config/config");
+const { EmbedBuilder } = require("discord.js");
 
 const app = express();
 
@@ -71,31 +72,54 @@ client.on("messageCreate", (message) => {
 client.once("ready", () => {
 	console.log(`Bot connecté freeEpic en tant que ${client.user.tag}`);
 
-	cron.schedule("0 18 * * 4", async () => {
+	cron.schedule("* 18 * * 4", async () => {
 		console.log("🔔 Vérification des jeux gratuits Epic Games...");
 
 		const freeGames = await getFreeEpicGames();
 
-		let message = "";
-
 		if (freeGames.length === 0) {
-			message = "Aucun nouveau jeu gratuit trouvé cette semaine 😢";
-		} else {
-			message = "**🎮 Jeux gratuits Epic Games cette semaine :**\n\n";
-			for (const game of freeGames) {
-				message += `- [${game.title}](${game.imgUrl})${game.description}\n`;
+			const noGameEmbed = new EmbedBuilder()
+				.setColor(0xff0000)
+				.setTitle("Aucun jeu gratuit cette semaine")
+				.setDescription("😢 Reviens la semaine prochaine !");
+			
+			for (const id of CHANNEL_IDS) {
+				try {
+					const channel = await client.channels.fetch(id);
+					if (channel?.isTextBased()) {
+						await channel.send({ embeds: [noGameEmbed] });
+						console.log(`✅ Message envoyé dans #${channel.name}`);
+					}
+				} catch (err) {
+					console.error(`❌ Erreur pour le channel ${id}:`, err);
+				}
 			}
+			return;
 		}
 
 		for (const id of CHANNEL_IDS) {
 			try {
 				const channel = await client.channels.fetch(id);
-				if (channel?.isTextBased()) {
-					await channel.send(message);
-					console.log(`✅ Message envoyé dans #${channel.name}`);
-				} else {
+				if (!channel?.isTextBased()) {
 					console.warn(`⚠️ Channel non textuel ou introuvable: ${id}`);
+					continue;
 				}
+				let message = "";
+				message = "**🎮 Jeux gratuits Epic Games cette semaine :**\n\n";
+				channel.send(message);
+				for (const game of freeGames) {
+					const embed = new EmbedBuilder()
+						.setColor(0x00bfff)
+						.setTitle(game.title)
+						.setURL(game.url)
+						.setDescription(game.description || "Pas de description fournie.")
+						.setImage(game.imgUrl || null)
+						.setFooter({ text: "Offert par Epic Games" });
+
+					await channel.send({ embeds: [embed] });
+				}
+
+				console.log(`✅ Embeds envoyés dans #${channel.name}`);
 			} catch (err) {
 				console.error(`❌ Erreur pour le channel ${id}:`, err);
 			}
