@@ -26,7 +26,6 @@ async function getFreeEpicGames() {
 		return [];
 	}
 }
-getFreeEpicGames();
 // IMPORTANT : exporter la fonction pour l'utiliser ailleurs
 module.exports = {
 	getFreeEpicGames,
