@@ -23,6 +23,7 @@ const client = new Client({
 
 // Charger les routes Express
 const statusRoute = require("./routes/status");
+const { time } = require("node:console");
 app.use("/", statusRoute);
 
 // Charger les commandes Discord
@@ -72,7 +73,7 @@ client.on("messageCreate", (message) => {
 client.once("ready", () => {
 	console.log(`Bot connecté freeEpic en tant que ${client.user.tag}`);
 
-	cron.schedule("* 18 * * 4", async () => {
+	cron.schedule("0 18 * * 4", async () => {
 		console.log("🔔 Vérification des jeux gratuits Epic Games...");
 
 		const freeGames = await getFreeEpicGames();
@@ -82,7 +83,6 @@ client.once("ready", () => {
 				.setColor(0xff0000)
 				.setTitle("Aucun jeu gratuit cette semaine")
 				.setDescription("😢 Reviens la semaine prochaine !");
-			
 			for (const id of CHANNEL_IDS) {
 				try {
 					const channel = await client.channels.fetch(id);
@@ -115,7 +115,6 @@ client.once("ready", () => {
 						.setDescription(game.description || "Pas de description fournie.")
 						.setImage(game.imgUrl || null)
 						.setFooter({ text: "Offert par Epic Games" });
-
 					await channel.send({ embeds: [embed] });
 				}
 
