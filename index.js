@@ -23,7 +23,6 @@ const client = new Client({
 
 // Charger les routes Express
 const statusRoute = require("./routes/status");
-const { time } = require("node:console");
 app.use("/", statusRoute);
 
 // Charger les commandes Discord
