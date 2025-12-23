@@ -71,8 +71,8 @@ client.on("messageCreate", (message) => {
 // Planifier une tâche toutes les semaines sur plusieur channel (ex: tous les jeudis à 19h00)
 client.once("ready", () => {
 	console.log(`Bot connecté freeEpic en tant que ${client.user.tag}`);
-	
-	cron.schedule("0 18 * * 4", async () => {
+	//0 18 * * 4
+	cron.schedule("1 * * * *", async () => {
 		console.log("🔔 Vérification des jeux gratuits Epic Games...");
 
 		const freeGames = await getFreeEpicGames();
