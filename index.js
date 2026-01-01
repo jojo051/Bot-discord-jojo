@@ -72,7 +72,7 @@ client.on("messageCreate", (message) => {
 client.once("ready", () => {
 	console.log(`Bot connecté freeEpic en tant que ${client.user.tag}`);
 	//0 18 * * 4
-	cron.schedule("0 18 * * *", async () => {
+	cron.schedule("0 18 * * 4", async () => {
 		console.log("🔔 Vérification des jeux gratuits Epic Games...");
 
 		const freeGames = await getFreeEpicGames();
